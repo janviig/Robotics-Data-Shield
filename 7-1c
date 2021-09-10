@@ -1,0 +1,73 @@
+    
+#include <Servo.h>          
+#include <NewPing.h>  
+
+//control pins
+int blueWire = 9;  
+int purpleWire = 12;  
+int greyWire = 11;  
+int whiteWire = 10;
+char button;
+
+//Servo motor;
+//const int GREEN_LED = 7;
+//const int RED_LED = 5;
+
+void setup() {
+  //digital pins set as output pins
+pinMode(blueWire, OUTPUT);
+pinMode(purpleWire, OUTPUT);
+pinMode(greyWire, OUTPUT);
+pinMode(whiteWire, OUTPUT);
+Serial.begin(9600);
+}
+
+void loop() {
+if(Serial.available() > 0)
+{
+  button = Serial.read();
+  Serial.println(button);
+
+  //use an if else statement to call all possible buttons that could be used
+  
+  if( button == 'F' || button == 'f')//move forward
+  {
+    digitalWrite(blueWire, HIGH);
+    digitalWrite(purpleWire, LOW);
+    digitalWrite(greyWire, HIGH);
+    digitalWrite(whiteWire, LOW);
+  }
+  
+  else if(button == 'B' || button == 'b') //move backwards
+  {
+    digitalWrite(blueWire, LOW);
+    digitalWrite(purpleWire, HIGH);
+    digitalWrite(greyWire, LOW);
+    digitalWrite(whiteWire, HIGH);
+  }
+
+    else if(button == 'L' || button == 'l') //moves right
+  {w
+    digitalWrite(blueWire, HIGH);
+    digitalWrite(purpleWire, LOW);
+    digitalWrite(greyWire, LOW);
+    digitalWrite(whiteWire, LOW);
+  }
+
+    else if(button == 'R' || button == 'r') //moves left
+  {
+    digitalWrite(blueWire, LOW);
+    digitalWrite(purpleWire, LOW);
+    digitalWrite(greyWire, HIGH);
+    digitalWrite(whiteWire, LOW);
+  }
+
+    else if(button == 'E' || button == 'e') //STOP
+  {
+    digitalWrite(blueWire, LOW);
+    digitalWrite(purpleWire, LOW);
+    digitalWrite(greyWire, LOW);
+    digitalWrite(whiteWire, LOW);
+  }
+}
+}
