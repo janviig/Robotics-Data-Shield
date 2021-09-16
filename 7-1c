@@ -1,8 +1,12 @@
-    
+        
 #include <Servo.h>          
 #include <NewPing.h>  
 
-//control pins
+/**control pins are defined according to where each one was placed on 
+ * the shield for better understanding
+ * eg) blue wire was at #9, and so on
+ * this then helps in the code for the motor movement
+*/
 int blueWire = 9;  
 int purpleWire = 12;  
 int greyWire = 11;  
@@ -15,6 +19,7 @@ char button;
 
 void setup() {
   //digital pins set as output pins
+  //the control pins are then called into the setup method as output pins
 pinMode(blueWire, OUTPUT);
 pinMode(purpleWire, OUTPUT);
 pinMode(greyWire, OUTPUT);
@@ -22,6 +27,7 @@ pinMode(whiteWire, OUTPUT);
 Serial.begin(9600);
 }
 
+//the loop begins
 void loop() {
 if(Serial.available() > 0)
 {
@@ -47,7 +53,7 @@ if(Serial.available() > 0)
   }
 
     else if(button == 'L' || button == 'l') //moves right
-  {w
+  {
     digitalWrite(blueWire, HIGH);
     digitalWrite(purpleWire, LOW);
     digitalWrite(greyWire, LOW);
